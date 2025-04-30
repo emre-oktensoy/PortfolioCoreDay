@@ -1,0 +1,30 @@
+﻿@model Portfolio
+
+@{
+    ViewData["Title"] = "CreatePortfolio";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Yeni Proje Girişi</h2>
+
+<form method="post">
+    <label>Proje Başlığı</label> 
+    <input type="text" asp-for="Title" style="border:1px solid black" />
+    <br />
+    <label>Proje Açıklaması</label>
+    <input type="text" asp-for="Description" style="border:1px solid black" />
+    <br />
+    <label>Proje Github Url</label>
+    <input type="text" asp-for="GithubUrl" style="border:1px solid black" />
+    <br />
+    <label>Proje Görseli</label>
+    <input type="text" asp-for="ImageUrl" style="border:1px solid black" />
+    <br />
+    <label>Proje Kategorisi</label>
+    <select asp-for="CategoryId" asp-items="ViewBag.v" class="form-control" style="border:1px solid black">
+        <option value="">--Kategori Seçiniz--</option>
+    </select>
+    <br />
+    <button class="btn btn-primary"> Projeyi Ekle</button>
+</form>
+

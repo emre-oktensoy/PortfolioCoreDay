@@ -1,0 +1,18 @@
+﻿@model Skill
+@{
+    ViewData["Title"] = "CreateSkill";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Yeni Yetenek Ekleme</h2>
+
+
+<form method="post">
+    <label>Yetenek Başlığı</label>
+    <input type="text" asp-for="SkillName" class="form-control" style="border:1px solid black" />
+    <br />
+    <label>Yetenek Değeri</label>
+    <input type="text" asp-for="SkillValue" class="form-control" style="border:1px solid black" />
+    <br />   
+    <button class="btn btn-primary">Yeteneği Kaydet</button>
+</form>

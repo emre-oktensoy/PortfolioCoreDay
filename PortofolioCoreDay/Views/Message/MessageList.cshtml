@@ -1,0 +1,46 @@
+﻿@model List<Message>
+@{
+	ViewData["Title"] = "MessageList";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Mesaj Listesi</h2>
+
+<table class="table table-borded">
+	<tr>
+		<th>#</th>
+		<th>Ad Soyad</th>
+		<th>Eposta</th>
+		<th>Konu</th>
+		<th>Mesaj Detayı</th>
+		<th>Gönderilme Tarihi</th>
+		<th>Okunma Durumu</th>
+		<th>Sil</th>
+		
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.MessageId</td>
+			<td>@item.NameSurname</td>
+			<td>@item.Email</td>
+			<td>@item.Subject</td>
+			<td>@item.MessageDetail</td>
+			<td>@item.SendDate</td>
+			@if (item.IsRead == true)
+				{
+				<td><a href="/Message/ChangeIsReadToFalse/@item.MessageId" class="btn btn-dark">Okunmadı Olarak İşaretle</a></td>
+				}
+			else
+				{
+				<td><a href="/Message/ChangeIsReadToTrue/@item.MessageId" class="btn btn-info">Okundu Olarak İşaretle</a></td>
+				}
+
+			<td><a href="/Message/DeleteMessage/@item.MessageId" class="btn btn-danger">Sil</a></td>
+
+		</tr>
+	}
+
+</table>
+
+

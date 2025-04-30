@@ -1,0 +1,75 @@
+﻿@model Message
+
+<div class="col-lg-7">
+	<form asp-controller="Message" asp-action="SendMessage" id="contactForm" method="post"  class="php-email-form" data-aos="fade-up" data-aos-delay="200" >
+		<div class="row gy-4">
+
+			<div class="col-md-6">
+				<label for="name-field" class="pb-2">Adınız Soyadınız</label>
+				<input type="text" name="NameSurname" id="name-field" class="form-control" required="">
+			</div>
+
+			<div class="col-md-6">
+				<label for="email-field" class="pb-2">E-posta Adresiniz</label>
+				<input type="email" class="form-control" name="Email" id="email-field" required="">
+			</div>
+
+			<div class="col-md-12">
+				<label for="subject-field" class="pb-2">Konu</label>
+				<input type="text" class="form-control" name="Subject" id="subject-field" required="">
+			</div>
+
+			<div class="col-md-12">
+				<label for="message-field" class="pb-2">Mesajınız</label>
+				<textarea class="form-control" name="MessageDetail" rows="10" id="message-field" required=""></textarea>
+			</div>
+
+			<div class="col-md-12 text-center">
+				<button type="submit">Gönder</button>
+			</div>
+		</div>
+	</form>
+
+    <!-- Script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#contactForm').on('submit', function (e) {
+                e.preventDefault(); // Formun normal submit olmasını engeller
+
+                var formData = $(this).serialize(); // Formdaki verileri yakala
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/Message/SendMessage', // Formun gitmesi gereken controller/action
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            // Başarı durumu
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Başarılı!',
+                                text: response.message, // JSON'dan gelen mesaj
+                                confirmButtonText: 'Tamam'
+                            });
+
+                            // Formu sıfırlıyoruz
+                            $('#contactForm')[0].reset(); // Formu sıfırlama işlemi
+                        }
+                    },
+                    error: function () {
+                        // Hata durumu
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Hata!',
+                            text: 'Mesaj gönderilirken bir hata oluştu.',
+                            confirmButtonText: 'Tamam'
+                        });
+                    }
+                });
+            });
+        });
+    </script>    
+</div><!-- End Contact Form -->

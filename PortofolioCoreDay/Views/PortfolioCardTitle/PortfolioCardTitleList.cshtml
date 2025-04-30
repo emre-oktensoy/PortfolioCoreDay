@@ -1,0 +1,33 @@
+﻿
+@model List<Portfolio>
+
+@{
+    ViewData["Title"] = "PortfolioCardTitleList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Card-Title Projelerim</h2>
+
+<div class="container mt-5">
+    <div class="row">
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Category.CategoryName">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">@item.Description</p>                            
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Veri bulunamadı.</p>
+        }
+    </div>
+</div>
