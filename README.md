@@ -8,9 +8,9 @@ Kullanıcı paneli ile birlikte Admin paneli tasarlanıp geliştirilmiş ve içe
 ASP.NET Core 9.0, Entity Framework Core ile güçlendirilmiş veritabanı yönetimi, LINQ tabanlı veri işlemleri ve Bootstrap ile zenginleştirilmiş görsel tasarım, projenin teknik altyapısını oluşturmaktadır.
 
 Kullanılan Teknolojiler:
-ASP.NET Core 9.0
-Entity Framework Core
-HTML, CSS, Bootstrap 5
-Razor View ve ViewComponent
-JavaScript ve SweetAlert2
+ASP.NET Core 9.0,
+Entity Framework Core,
+HTML, CSS, Bootstrap 5,
+Razor View ve ViewComponent,
+JavaScript ve SweetAlert2,
 SQL Server
